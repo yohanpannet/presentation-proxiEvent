@@ -1,30 +1,30 @@
 <!doctype html>
 <html lang="fr">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>Docker - Presentation</title>
+	<title>Docker - Presentation</title>
 
-		<meta name="description" content="Presentation de Docker">
-		<meta name="author" content="Yohan Pannet">
+	<meta name="description" content="Presentation de Docker">
+	<meta name="author" content="Yohan Pannet">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Custom CSS -->
+	<!-- Custom CSS -->
 
 
-		<!-- Printing and PDF exports -->
-		<script>
+	<!-- Printing and PDF exports -->
+	<script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
@@ -32,215 +32,77 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
-		<!--[if lt IE 9]>
+	<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+	<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
 				<section>
-					<section>
-						<h2> Introduction à Docker </h2>
+					<img src="img/proxilabs-logo.jpg" />
+					<h2> ProxiEvent </h2>
 
-						<blockquote>Build, Ship and Run Any App, Anywhere <b>*</b></blockquote>
-						<img src="img/docker-logo.png" style="height: 50vmin;"/>
-						<p style="font-size: small;">*Where "anywhere" means an x86 server running a modern Linux kernel (3.2+ generally or 2.6.32+ for RHEL 6.5+, Fedora, & related)</p>
+					<blockquote>J'ai vu de la lumière alors je suis rentré</blockquote>
 
-					</section>
-					<section data-markdown>
-						## réferences:
-
-						* [docker-intro par pointful](http://pointful.github.io/docker-intro)
-						* [Introduction à Docker par Sébastien Douche](http://douche.name/presentation-docker/#1)
-						* [Docker Présentation sur le blog d'Ippon](http://blog.ippon.fr/2014/04/14/docker-presentation-part-1/)
-						* [ZDnet: What is Docker and why is it so darn popular?](http://www.zdnet.com/article/what-is-docker-and-why-is-it-so-darn-popular/)
-					</section>
-					<section id="themes">
-						<h2>Magie</h2>
-						<p>
-							Hack pour changer le Theme en live! <br>
-							<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-							<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-						</p>
 				</section>
-				</section>
-				<section data-markdown>
-					## Pourquoi j'ai regardé Docker?
-					* Ca fait le buzz
-					* Ca semble simplifier le deployement
-					* Ca semble faire beacoup plus
-					* J'ai eu besoin de tester des "outils"
-					* ... J'ai aussi testé Docker :)
-				</section>
-
-					<section >
-						<h2> C'est quoi Docker? </h2>
-						C'est une application.
-						<pre><code style="font-size:smaller">
-docker@boot2docker:~$ docker --help
-Usage: docker [OPTIONS] COMMAND [arg...]
-
-A self-sufficient runtime for linux containers.
-
-Options:
-  --api-cors-header=                   Set CORS headers in the remote API
-  -b, --bridge=                        Attach containers to a network bridge
-  --bip=                               Specify network bridge IP
-  -D, --debug=false                    Enable debug mode
- ...
-
-Commands:
-    attach    Attach to a running container
-    build     Build an image from a Dockerfile
-    commit    Create a new image from a container's changes
-    cp        Copy files/folders from a container's filesystem to the host path
-    create    Create a new container
-...
-						</code></pre>
-
-					</section>
-					<section data-markdown>
-						Qui tourne sous Linux.
-
-						Pour Windows & Mac, il existe:
-						## [Boot2docker](http://boot2docker.io/)
-						(deprecated)
-
-```
-                  ##         .
-            ## ## ##        ==
-         ## ## ## ## ##    ===
-     /"""""""""""""""""\___/ ===
-~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
-     \______ o           __/
-       \    \         __/
-        \____\_______/
- _                 _   ____     _            _
-| |__   ___   ___ | |_|___ \ __| | ___   ___| | _____ _ __
-| '_ \ / _ \ / _ \| __| __) / _` |/ _ \ / __| |/ / _ \ '__|
-| |_) | (_) | (_) | |_ / __/ (_| | (_) | (__|   <  __/ |
-|_.__/ \___/ \___/ \__|_____\__,_|\___/ \___|_|\_\___|_|
-Boot2Docker version 1.6.0, build master : a270c71 - Thu Apr 16 19:50:36 UTC 2015
-Docker version 1.6.0, build 4749651
-docker@boot2docker:~$
-```
-					</section>
-
-					<section data-markdown>
-						## Docker Vs VM
-
-						- L'hyperviseur simule une machine
-						- Les containeurs partage l'OS (le kernel) et isole le contexte d'exécution
-
-
-					</section>
-					<section data-background="#add9e4">
-						<a href="http://pointful.github.io/docker-intro/#/13">
-							<img src="img/containers-vs-vms.png"/>
-						</a>
+				
+				<section id="themes">
+					<h2>Magie</h2>
+					<p>
+						Hack pour changer le Theme en live! <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a>						-
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>						-
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>						-
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>						-
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>						-
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>						<br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>						-
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>						-
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>						-
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>						-
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
 					</p>
-					</section>
 				</section>
-				<section>
-					<section data-markdown>
-						### DockerFile
-						```
-						# This is a comment
-						FROM ubuntu:14.04
-						MAINTAINER Kate Smith <ksmith@example.com>
-						RUN echo "Je peux raconter ma vie... "
-						RUN apt-get -y update
-						```
-						### Image
-						```
-						docker build -t my-Docker-Image .
-						```
-						### Container
-						```
-						docker run my-Docker-Image /bin/echo 'Hello world'
-						```
-					</section>
-					<section data-markdown>
-						### Demo
-						- Mon premier Dockerfile:
-
-						```
-						# this is a comment
-						FROM ubuntu:14.04
-						RUN echo "Je peux raconter ma vie pendant le build"
-						RUN apt-get update -y
-						RUN echo "Le build est fini"
-						```
-						```
-						docker build --tag first-docker .
-						```
-						```
-						docker run first-docker
-						```
-					</section>
-					<section data-markdown>
-						### Demo (un peu mieux)
-						```
-						FROM first-docker:latest
-						CMD echo 'maintenant je fait quelque chose'
-
-						```
-					</section >
-					<section data-markdown>
-						### Demo (encore mieux)
-						```
-						FROM first-docker:latest
-						RUN apt-get update -y && apt-get install -y fortunes
-						CMD /usr/games/fortune -a | echo
-						```
-					</section >
-					<section >
-						<h3> Demo en vrai (si tout va bien)</h3>
-						<ul>
-							<li> -it / -d
-							<li> --port
-							<li> --volume
-						</ul>
-					</section>
-						<section data-markdown>
-							- docker run -t -i ubuntu:14.04 /bin/bash
-							- docker run -d ubuntu:14.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
-							- docker logs insane_babbage
-							- docker run -d -P training/webapp python app.py
-							https://docs.docker.com/userguide/usingdocker/
-						</section>
-					</section>
-				</section>
-				<section data-markdown>
-					## [Docker Hub](https://registry.hub.docker.com/)
-				</section>
-				<section data-markdown>
-					My use case: Redmine / ExoPlateform / Taiga
-				</section>
-
-			</div>
+			</section>
+			<section data-markdown>
+				## La naissance de ProxiLabNord 
+				* Lancé en janvier dernier
+				* Pour redynamiser la veille
+				* Dome Event, Newsletter, innovation
+				
+			</section>
+			<section data-markdown>
+				## Ses premiers pas
+				
+				* 1er bilan le 30.03
+				* Desception par rapport aux attentes
+				* Mais il y a des réalisations
+				  * Dome Event, NewsLetter, Inovation (Docker, test online)
+				
+				> La réflexion est faite que malgrè notre volonté d'ouvrir PLN à tous, ce n'est pas ce qui est perçu par les collaborateurs.
+				
+			</section>
+			<section data-markdown>
+				## L'aventure continue
+				
+				
+			</section>
 
 		</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	</div>
 
-		<script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
 
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
@@ -268,5 +130,6 @@ docker@boot2docker:~$
 
 		</script>
 
-	</body>
+</body>
+
 </html>
